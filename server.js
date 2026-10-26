@@ -448,6 +448,12 @@ const server = http.createServer((req, res) => {
   let filePath = path.join(BASE_DIR, urlPath === '/' ? 'index.html' : urlPath);
   if (urlPath === '/dashboard') filePath = path.join(BASE_DIR, 'dashboard.html');
 
+  // Fallback: If requested from /assets/ but file is in root
+  if (!fs.existsSync(filePath) && urlPath.startsWith('/assets/')) {
+    const fallback = path.join(BASE_DIR, path.basename(urlPath));
+    if (fs.existsSync(fallback)) filePath = fallback;
+  }
+
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
@@ -459,7 +465,12 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Elite Node Server running at http://localhost:${PORT}/`);
-  startTunnel();
-});
+module.exports = server;
+
+if (require.main === module || (!process.env.VERCEL && !process.env.NOW_REGION)) {
+  server.listen(PORT, () => {
+    console.log(`Elite Node Server running at http://localhost:${PORT}/`);
+    startTunnel();
+  });
+}
+
