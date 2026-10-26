@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: elite-program
+    env: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: RENDER
+        value: "true"

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تتبع المرشحين والمتقدمين | Elite Live Potential IDs Tracker</title>
+  <!-- Favicon / Educational Logo -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/logo.svg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            dingtalk: {
+              500: '#007FFF',
+              600: '#0066CC',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Cairo', sans-serif; }
+    .en-font { font-family: 'Outfit', sans-serif; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- Header -->
+  <header class="bg-slate-800/80 backdrop-blur-md border-b border-slate-700/80 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 p-2 rounded-2xl bg-gradient-to-tr from-emerald-800 via-emerald-600 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-600/30 border border-emerald-300/40 shrink-0">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L1 7L12 12L21 7.91V14H23V7L12 2Z" fill="#FDE047"/>
+            <path d="M5 10.5V14.5C5 17 8 18.5 12 18.5C16 18.5 19 17 19 14.5V10.5L12 14L5 10.5Z" fill="#FFFFFF"/>
+            <path d="M8.5 20.8C10 21.6 11 22 12 22C13 22 14 21.6 15.5 20.8" stroke="#FDE047" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xl font-black text-white">لوحة تتبع المرشحين والنخبة</h1>
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              مباشر (Live)
+            </span>
+          </div>
+          <span class="en-font text-xs text-slate-400">POTENTIAL IDS LIVE TRACKER & DINGTALK NOTIFIER</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="flex items-center gap-3">
+        <!-- DingTalk Target Badge -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-700/50 border border-slate-600 text-xs text-slate-300">
+          <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+          <span>إشعار DingTalk:</span>
+          <span class="en-font font-bold text-sky-400">@EGSS-AMRSAFWAT</span>
+        </div>
+
+        <button onclick="openDingTalkModal()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+          <span>⚙️ إعدادات DingTalk</span>
+        </button>
+
+        <a href="index.html" target="_blank" class="px-3.5 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-bold transition flex items-center gap-1.5">
+          <span>الموقع الرسمي ↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div id="dashboardApp" class="flex-1 flex flex-col">
+  <!-- Main Content -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-6">
+
+    <!-- Public Registration Link Banner -->
+    <div class="bg-gradient-to-r from-blue-950/70 via-indigo-950/60 to-slate-900 border border-blue-500/40 rounded-3xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl backdrop-blur-md">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-2xl font-bold shrink-0">
+          🌐
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-sm font-bold text-white">رابط التسجيل العام للطلاب وأولياء الأمور (متاح عبر الإنترنت):</h3>
+            <span id="tunnelStatusBadge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/40 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              متصل بالإنترنت
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">
+            أرسل هذا الرابط للطلاب أو انشره للتسجيل؛ يفتح لهم صفحة التقديم مباشرة وتصلك بياناتهم هنا فورياً وعبر DingTalk.
+            (لا يمكن لأي زائر فتح لوحة التحكم من خلاله).
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 w-full md:w-auto shrink-0">
+        <input id="publicUrlInput" readonly type="text" value="جاري جلب الرابط..." class="bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-sky-300 font-mono w-full md:w-80 select-all focus:outline-none" dir="ltr">
+        <button onclick="copyPublicUrl()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 whitespace-nowrap shadow-lg shadow-blue-600/30">
+          <span>📋 نسخ الرابط للعميل</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- KPI Metric Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Total IDs -->
+      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400">إجمالي المرشحين (Total IDs)</span>
+          <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm">🆔</span>
+        </div>
+        <div class="text-3xl font-black text-white en-font" id="statTotal">0</div>
+        <div class="text-xs text-emerald-400 mt-1 font-semibold">محدث لحظياً مع كل تسجيل</div>
+      </div>
+
+      <!-- New Leads -->
+      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400">طلبات جديدة بحاجة لمتابعة</span>
+          <span class="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-sm">⏳</span>
+        </div>
+        <div class="text-3xl font-black text-amber-400 en-font" id="statNew">0</div>
+        <div class="text-xs text-amber-400/80 mt-1 font-semibold">تنتظر التواصل وتحديد المقابلة</div>
+      </div>
+
+      <!-- Scheduled -->
+      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400">تم تحديد موعد مقابلة</span>
+          <span class="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-sm">📅</span>
+        </div>
+        <div class="text-3xl font-black text-sky-400 en-font" id="statScheduled">0</div>
+        <div class="text-xs text-sky-400/80 mt-1 font-semibold">جاهزون لاختبار تحديد المستوى</div>
+      </div>
+
+      <!-- Accepted -->
+      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400">المقبولون في برنامج النخبة</span>
+          <span class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-sm">🏆</span>
+        </div>
+        <div class="text-3xl font-black text-purple-400 en-font" id="statAccepted">0</div>
+        <div class="text-xs text-purple-400/80 mt-1 font-semibold">أبطال الطلاقة الجدد</div>
+      </div>
+    </div>
+
+    <!-- Controls: Search, Filters & Export -->
+    <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-1 flex-col sm:flex-row gap-3 w-full md:w-auto">
+        <!-- Search Input -->
+        <div class="relative flex-1">
+          <input id="searchInput" oninput="applyFilters()" type="text" placeholder="بحث بالرقم التعريفي (ID)، اسم الطالب، أو رقم الهاتف..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+        </div>
+
+        <!-- Filter Country -->
+        <select id="countryFilter" onchange="applyFilters()" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
+          <option value="">جميع الدول 🌍</option>
+          <option value="السعودية">المملكة العربية السعودية 🇸🇦</option>
+          <option value="الإمارات">الإمارات العربية المتحدة 🇦🇪</option>
+          <option value="تايلاند">تايلاند 🇹🇭</option>
+          <option value="تركيا">تركيا 🇹🇷</option>
+        </select>
+
+        <!-- Filter Status -->
+        <select id="statusFilter" onchange="applyFilters()" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
+          <option value="">جميع الحالات</option>
+          <option value="New Lead">طلب جديد (New Lead)</option>
+          <option value="Contacted">تم التواصل (Contacted)</option>
+          <option value="Interview Scheduled">موعد مقابلة (Scheduled)</option>
+          <option value="Accepted">تم القبول (Accepted)</option>
+        </select>
+      </div>
+
+      <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
+        <button onclick="openManualModal()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-md">
+          <span>+ إضافة مرشح يدوياً</span>
+        </button>
+        <button onclick="exportToCSV()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+          <span>📥 تصدير CSV</span>
+        </button>
+        <button onclick="clearAllLeads()" class="px-3.5 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/30 rounded-xl text-xs font-bold transition flex items-center gap-1.5" title="مسح كافة البيانات">
+          <span>🗑️ مسح الكل</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Potential IDs Table -->
+    <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl shadow-sm overflow-hidden">
+      <div class="p-4 border-b border-slate-700/80 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <h2 class="text-base font-bold text-white">سجل المرشحين والمتقدمين (Potential Leads)</h2>
+          <span id="filteredCountBadge" class="px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 text-xs font-bold">0 سجل</span>
+        </div>
+        <button onclick="fetchLeads(true)" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1">
+          <span>تحديث القائمة 🔄</span>
+        </button>
+      </div>
+
+      <div class="overflow-x-auto custom-scroll">
+        <table class="w-full text-right text-sm">
+          <thead class="bg-slate-900/60 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-slate-700">
+            <tr>
+              <th class="py-3.5 px-4">Potential ID</th>
+              <th class="py-3.5 px-4">اسم الطالب ثلاثي</th>
+              <th class="py-3.5 px-4">العمر</th>
+              <th class="py-3.5 px-4">المدرسة</th>
+              <th class="py-3.5 px-4">هدف دخول المنصة</th>
+              <th class="py-3.5 px-4">الدولة</th>
+              <th class="py-3.5 px-4">هاتف ولي الأمر</th>
+              <th class="py-3.5 px-4">تاريخ التسجيل</th>
+              <th class="py-3.5 px-4">الحالة والمتابعة</th>
+              <th class="py-3.5 px-4 text-center">إجراءات سريعة</th>
+            </tr>
+          </thead>
+          <tbody id="leadsTableBody" class="divide-y divide-slate-700/60 text-slate-200">
+            <!-- Dynamic rows rendered here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden py-16 text-center text-slate-500">
+        <div class="text-4xl mb-2">🔍</div>
+        <p class="text-sm font-semibold">لم يتم العثور على أي مرشحين يطابقون خيارات البحث.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- DingTalk Settings Modal -->
+  <div id="dingTalkModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-800 border border-slate-700 rounded-3xl max-w-lg w-full p-6 space-y-5 text-right relative shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+        <h3 class="text-lg font-black text-white flex items-center gap-2">
+          <span>📲 إعدادات إشعارات تطبيق DingTalk</span>
+        </h3>
+        <button onclick="closeDingTalkModal()" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        سيتم إرسال إشعار لحظي عبر روبوت DingTalk لكل تسجيل جديد مع الإشارة لاسم المستخدم:
+        <span class="en-font font-bold text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800">@EGSS-AMRSAFWAT</span>
+      </p>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">DingTalk Custom Robot Webhook URL</label>
+          <input id="dtWebhookUrl" type="url" placeholder="https://oapi.dingtalk.com/robot/send?access_token=..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 font-mono" dir="ltr">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">Secret (إذا تم تفعيل التوقيع Sign في الروبوت)</label>
+          <input id="dtSecret" type="text" placeholder="SEC..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 font-mono" dir="ltr">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">المستخدم المستهدف للإشعار (Mention User ID)</label>
+          <input id="dtUserId" type="text" value="EGSS-AMRSAFWAT" class="w-full bg-slate-900/60 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-300 font-mono" dir="ltr" readonly>
+        </div>
+      </div>
+
+      <div id="dtStatusMsg" class="hidden p-3 rounded-xl text-xs font-bold text-center"></div>
+
+      <div class="flex items-center gap-3 pt-2">
+        <button onclick="saveDingTalkConfig()" class="flex-1 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-black transition shadow-md">
+          حفظ الإعدادات 💾
+        </button>
+        <button onclick="testDingTalkNotification()" class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-xl text-xs font-bold transition">
+          🔔 إرسال إشعار تجريبي
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manual Add Lead Modal -->
+  <div id="manualModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-800 border border-slate-700 rounded-3xl max-w-md w-full p-6 space-y-4 text-right relative shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+        <h3 class="text-lg font-black text-white">إضافة مرشح جديد يدوياً</h3>
+        <button onclick="closeManualModal()" class="text-slate-400 hover:text-white text-xl">✕</button>
+      </div>
+
+      <form onsubmit="handleManualAdd(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">اسم الطالب ثلاثي *</label>
+          <input id="manualName" required type="text" placeholder="مثال: أحمد علي محمد" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">العمر *</label>
+            <input id="manualAge" required type="number" min="1" max="120" placeholder="مثال: 10 أو 15" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">الدولة *</label>
+            <select id="manualCountry" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+              <option value="الإمارات العربية المتحدة">الإمارات العربية المتحدة</option>
+              <option value="الكويت">الكويت</option>
+              <option value="تركيا">تركيا</option>
+              <option value="تايلاند">تايلاند</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">المدرسة *</label>
+            <select id="manualSchoolType" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="حكومي">حكومي</option>
+              <option value="خاصة">خاصة</option>
+              <option value="انترناشونال">انترناشونال</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">هدف دخول المنصة *</label>
+            <select id="manualTargetLevel" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="مستوى تأسيسي (LV1 - LV2 - LV3)">مستوى تأسيسي (LV1 - LV2 - LV3)</option>
+              <option value="مستوى متوسط (LV4 - LV5 - LV6)">مستوى متوسط (LV4 - LV5 - LV6)</option>
+              <option value="مستوى متقدم (LV7 - LV8 - LV9)">مستوى متقدم (LV7 - LV8 - LV9)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">رقم هاتف ولي الأمر (واتساب) *</label>
+          <input id="manualPhone" required type="tel" placeholder="01..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" dir="ltr">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">ملاحظات إضافية</label>
+          <textarea id="manualNotes" placeholder="ملاحظات حول مستوى الطالب..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white h-16"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-black transition">
+          حفظ وتوليد Potential ID وإرسال إشعار DingTalk
+        </button>
+      </form>
+    </div>
+  </div>
+
+  </div> <!-- End of dashboardApp -->
+
+  <!-- Scripts -->
+  <script>
+    let allLeads = [];
+    let autoRefreshInterval = null;
+
+    // Fetch Leads from Backend
+    async function fetchLeads(showToast = false) {
+      try {
+        const res = await fetch('/api/leads');
+        const data = await res.json();
+
+        if (Array.isArray(data)) {
+          allLeads = data;
+        } else if (data && Array.isArray(data.leads)) {
+          allLeads = data.leads;
+        } else if (data && data.leads && Array.isArray(data.leads.value)) {
+          allLeads = data.leads.value;
+        } else {
+          allLeads = [];
+        }
+
+        updateMetrics();
+        applyFilters();
+        if (showToast) showNotificationToast('تم تحديث قائمة المرشحين بنجاح!');
+      } catch (err) {
+        console.error('Failed to fetch leads', err);
+      }
+    }
+
+    // Update KPI Metric Cards
+    function updateMetrics() {
+      document.getElementById('statTotal').innerText = allLeads.length;
+      document.getElementById('statNew').innerText = allLeads.filter(l => l.status === 'New Lead').length;
+      document.getElementById('statScheduled').innerText = allLeads.filter(l => l.status === 'Interview Scheduled').length;
+      document.getElementById('statAccepted').innerText = allLeads.filter(l => l.status === 'Accepted').length;
+    }
+
+    // Apply Filter & Search
+    function applyFilters() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const countryFilter = document.getElementById('countryFilter').value;
+      const statusFilter = document.getElementById('statusFilter').value;
+
+      const filtered = allLeads.filter(lead => {
+        const matchesQuery = !q || 
+          (lead.id && lead.id.toLowerCase().includes(q)) ||
+          (lead.name && lead.name.toLowerCase().includes(q)) ||
+          (lead.phone && lead.phone.toLowerCase().includes(q));
+
+        const matchesCountry = !countryFilter || (lead.country && lead.country.includes(countryFilter));
+        const matchesStatus = !statusFilter || lead.status === statusFilter;
+
+        return matchesQuery && matchesCountry && matchesStatus;
+      });
+
+      renderTable(filtered);
+    }
+
+    // Render Table Rows
+    function renderTable(leads) {
+      const tbody = document.getElementById('leadsTableBody');
+      const emptyState = document.getElementById('emptyState');
+      const badge = document.getElementById('filteredCountBadge');
+
+      badge.innerText = `${leads.length} مرشح`;
+
+      if (leads.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      tbody.innerHTML = leads.map(lead => {
+        // Status Badge Style
+        let statusBadgeClass = "bg-slate-700 text-slate-300";
+        if (lead.status === 'New Lead') statusBadgeClass = "bg-amber-500/20 text-amber-300 border border-amber-500/40";
+        if (lead.status === 'Contacted') statusBadgeClass = "bg-blue-500/20 text-blue-300 border border-blue-500/40";
+        if (lead.status === 'Interview Scheduled') statusBadgeClass = "bg-sky-500/20 text-sky-300 border border-sky-500/40";
+        if (lead.status === 'Accepted') statusBadgeClass = "bg-purple-500/20 text-purple-300 border border-purple-500/40";
+
+        const cleanPhone = (lead.phone || '').replace(/\D/g, '');
+        const whatsappLink = `https://web.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent('مرحباً ولي أمر الطالب ' + lead.name + '، بخصوص تسجيلكم في برنامج النخبة (رقم الترشيح ' + lead.id + ')...')}`;
+
+        // School Type Badge
+        let schoolBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-slate-700/60 text-slate-300 border border-slate-600">${lead.schoolType || 'حكومي'}</span>`;
+        if (lead.schoolType === 'خاصة') schoolBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30">خاصة 🏫</span>`;
+        if (lead.schoolType === 'انترناشونال') schoolBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">انترناشونال 🌐</span>`;
+
+        // Target Level Badge
+        let levelBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">${lead.targetLevel || 'مستوى تأسيسي (LV1 - LV2 - LV3)'}</span>`;
+        if (lead.targetLevel && lead.targetLevel.includes('متوسط')) levelBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">${lead.targetLevel} ⚡</span>`;
+        if (lead.targetLevel && lead.targetLevel.includes('متقدم')) levelBadge = `<span class="px-2 py-0.5 rounded-lg text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30">${lead.targetLevel} 🚀</span>`;
+
+        return `
+          <tr class="hover:bg-slate-700/30 transition">
+            <td class="py-3 px-4">
+              <span class="en-font font-black text-xs px-2.5 py-1 rounded-lg bg-emerald-950/80 text-emerald-400 border border-emerald-800 tracking-wider">
+                ${lead.id}
+              </span>
+            </td>
+            <td class="py-3 px-4 font-bold text-white whitespace-nowrap">${lead.name}</td>
+            <td class="py-3 px-4 text-xs font-semibold text-slate-300 whitespace-nowrap">${lead.age} سنة</td>
+            <td class="py-3 px-4 text-xs whitespace-nowrap">${schoolBadge}</td>
+            <td class="py-3 px-4 text-xs whitespace-nowrap">${levelBadge}</td>
+            <td class="py-3 px-4 text-xs font-medium whitespace-nowrap">${lead.country}</td>
+            <td class="py-3 px-4 text-xs font-mono text-slate-300 whitespace-nowrap" dir="ltr">${lead.phone}</td>
+            <td class="py-3 px-4 text-xs text-slate-400 font-mono whitespace-nowrap">${lead.createdAt}</td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <select onchange="updateLeadStatus('${lead.id}', this.value)" class="text-xs bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 font-bold ${statusBadgeClass} focus:outline-none">
+                <option value="New Lead" ${lead.status === 'New Lead' ? 'selected' : ''}>⏳ جديد (New)</option>
+                <option value="Contacted" ${lead.status === 'Contacted' ? 'selected' : ''}>📞 تم التواصل</option>
+                <option value="Interview Scheduled" ${lead.status === 'Interview Scheduled' ? 'selected' : ''}>📅 مقابلة محددة</option>
+                <option value="Accepted" ${lead.status === 'Accepted' ? 'selected' : ''}>🏆 تم القبول</option>
+                <option value="Archived" ${lead.status === 'Archived' ? 'selected' : ''}>📁 أرشيف</option>
+              </select>
+            </td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-1.5">
+                <a href="${whatsappLink}" target="_blank" class="p-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white transition" title="فتح محادثة واتساب ويب">
+                  💬
+                </a>
+                <button onclick="copyLeadID('${lead.id}')" class="p-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 transition" title="نسخ المعرف ID">
+                  📋
+                </button>
+                <button onclick="deleteLead('${lead._uid || lead.id}', '${lead.name}', '${lead.id}')" class="p-1.5 rounded-lg bg-rose-600/20 hover:bg-rose-600 text-rose-400 hover:text-white transition" title="حذف هذا المرشح فقط">
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Update Status
+    async function updateLeadStatus(id, newStatus) {
+      try {
+        await fetch('/api/leads/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id, status: newStatus })
+        });
+        showNotificationToast(`تم تحديث حالة المرشح ${id} بنجاح!`);
+        fetchLeads(false);
+      } catch (err) {
+        console.error('Update status error', err);
+      }
+    }
+
+    // Copy ID Helper
+    function copyLeadID(id) {
+      navigator.clipboard.writeText(id);
+      showNotificationToast(`تم نسخ المعرف: ${id}`);
+    }
+
+    // Delete Single Lead
+    async function deleteLead(key, name, displayId) {
+      const shownId = displayId || key;
+      if (!confirm(`هل أنت متأكد من حذف بيانات المرشح "${name}" (${shownId}) فقط؟`)) {
+        return;
+      }
+      try {
+        const res = await fetch('/api/leads/delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: key })
+        });
+        const data = await res.json();
+        if (data && data.success) {
+          await fetchLeads(false);
+          showNotificationToast(`تم حذف المرشح ${shownId} بنجاح! 🗑️`);
+        }
+      } catch (err) {
+        alert('حدث خطأ أثناء محاولة الحذف.');
+        console.error(err);
+      }
+    }
+
+    // Clear All Leads
+    async function clearAllLeads() {
+      if (!confirm('⚠️ تحذير: هل أنت متأكد من رغبتك في حذف جميع بيانات وسجلات المرشحين نهائياً؟ لا يمكن التراجع عن هذا الإجراء.')) {
+        return;
+      }
+      try {
+        const res = await fetch('/api/leads/delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'clear_all' })
+        });
+        const data = await res.json();
+        if (data && data.success) {
+          allLeads = [];
+          updateMetrics();
+          renderTable([]);
+          showNotificationToast('تم حذف وتفريغ كافة البيانات بنجاح! 🗑️');
+        }
+      } catch (err) {
+        alert('حدث خطأ أثناء محاولة الحذف.');
+        console.error(err);
+      }
+    }
+
+    // Export to CSV
+    function exportToCSV() {
+      if (allLeads.length === 0) {
+        alert('لا توجد بيانات لتصديرها');
+        return;
+      }
+      let csv = "\uFEFFPotential ID,Student Name,Age,School Type,Target Level,Country,Phone,Status,Registered At,Notes\n";
+      allLeads.forEach(l => {
+        csv += `"${l.id}","${l.name}","${l.age}","${l.schoolType || 'حكومي'}","${l.targetLevel || 'مستوى تأسيسي'}","${l.country}","${l.phone}","${l.status}","${l.createdAt}","${l.notes || ''}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `Elite_Potential_IDs_${new Date().toISOString().slice(0,10)}.csv`;
+      link.click();
+    }
+
+    // DingTalk Modal Controls
+    async function openDingTalkModal() {
+      document.getElementById('dingTalkModal').classList.remove('hidden');
+      try {
+        const res = await fetch('/api/dingtalk/config');
+        const cfg = await res.json();
+        if (cfg.dingtalkWebhookUrl) document.getElementById('dtWebhookUrl').value = cfg.dingtalkWebhookUrl;
+        if (cfg.dingtalkSecret) document.getElementById('dtSecret').value = cfg.dingtalkSecret;
+      } catch (err) {
+        console.error('Config load error', err);
+      }
+    }
+
+    function closeDingTalkModal() {
+      document.getElementById('dingTalkModal').classList.add('hidden');
+    }
+
+    async function saveDingTalkConfig() {
+      const url = document.getElementById('dtWebhookUrl').value.trim();
+      const secret = document.getElementById('dtSecret').value.trim();
+
+      await fetch('/api/dingtalk/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          dingtalkWebhookUrl: url,
+          dingtalkSecret: secret,
+          dingtalkUserId: "EGSS-AMRSAFWAT"
+        })
+      });
+
+      const status = document.getElementById('dtStatusMsg');
+      status.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block";
+      status.innerText = "✅ تم حفظ إعدادات DingTalk بنجاح!";
+      setTimeout(() => status.classList.add('hidden'), 4000);
+    }
+
+    async function testDingTalkNotification() {
+      const url = document.getElementById('dtWebhookUrl').value.trim();
+      const secret = document.getElementById('dtSecret').value.trim();
+      const status = document.getElementById('dtStatusMsg');
+
+      if (!url) {
+        alert('يرجى إدخال رابط DingTalk Webhook URL أولاً');
+        return;
+      }
+
+      status.className = "p-3 rounded-xl text-xs font-bold text-center bg-blue-500/20 text-blue-300 border border-blue-500/40 block";
+      status.innerText = "جاري إرسال الإشعار التجريبي إلى @EGSS-AMRSAFWAT...";
+
+      try {
+        const res = await fetch('/api/dingtalk/test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ webhookUrl: url, secret: secret })
+        });
+        const d = await res.json();
+        if (d.success) {
+          status.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block";
+          status.innerText = "🎉 تم تسليم الإشعار التجريبي في DingTalk بنجاح!";
+        } else {
+          status.className = "p-3 rounded-xl text-xs font-bold text-center bg-rose-500/20 text-rose-300 border border-rose-500/40 block";
+          status.innerText = "⚠️ تعذر إرسال الإشعار. تأكد من صحة الرابط أو الـ Secret.";
+        }
+      } catch (err) {
+        status.className = "p-3 rounded-xl text-xs font-bold text-center bg-rose-500/20 text-rose-300 border border-rose-500/40 block";
+        status.innerText = "خطأ في الاتصال بالخادم.";
+      }
+    }
+
+    // Manual Modal Controls
+    function openManualModal() {
+      document.getElementById('manualModal').classList.remove('hidden');
+    }
+    function closeManualModal() {
+      document.getElementById('manualModal').classList.add('hidden');
+    }
+
+    async function handleManualAdd(e) {
+      e.preventDefault();
+      const payload = {
+        name: document.getElementById('manualName').value.trim(),
+        age: document.getElementById('manualAge').value.trim(),
+        schoolType: document.getElementById('manualSchoolType').value,
+        targetLevel: document.getElementById('manualTargetLevel').value,
+        country: document.getElementById('manualCountry').value,
+        phone: document.getElementById('manualPhone').value.trim(),
+        notes: document.getElementById('manualNotes').value.trim()
+      };
+
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      closeManualModal();
+      showNotificationToast(`تم إضافة المرشح بنجاح! المعرف الجديد: ${data.id}`);
+      fetchLeads(false);
+    }
+
+    // Toast Notification helper
+    function showNotificationToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = "fixed bottom-5 right-5 z-50 bg-emerald-600 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-2xl transition transform duration-300";
+      toast.innerText = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    // Public URL Helpers
+    async function loadPublicUrl() {
+      try {
+        const res = await fetch('/api/public-url');
+        const data = await res.json();
+        if (data.url) {
+          document.getElementById('publicUrlInput').value = data.url;
+          document.getElementById('tunnelStatusBadge').innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل بالإنترنت ✅';
+        }
+      } catch (err) {}
+    }
+
+    function copyPublicUrl() {
+      const url = document.getElementById('publicUrlInput').value;
+      if (url && !url.includes('جاري')) {
+        navigator.clipboard.writeText(url);
+        showNotificationToast('تم نسخ رابط الموقع العام بنجاح! جاهز للإرسال للطلاب وأولياء الأمور 🌐');
+      }
+    }
+
+    // Auto Refresh every 5 seconds for live real-time sync
+    fetchLeads();
+    loadPublicUrl();
+    autoRefreshInterval = setInterval(() => {
+      fetchLeads(false);
+      loadPublicUrl();
+    }, 5000);
+  </script>
+</body>
+</html>

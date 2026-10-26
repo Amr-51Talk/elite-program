@@ -1,0 +1,19 @@
+{
+  "name": "elite-program",
+  "version": "1.0.0",
+  "description": "برنامج النخبة Elite Program للتمكن والطلاقة اللغوية الشاملة",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "elite",
+    "education",
+    "cambridge"
+  ],
+  "author": "Elite Program",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

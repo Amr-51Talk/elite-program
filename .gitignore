@@ -1,0 +1,14 @@
+node_modules/
+.git/
+*.log
+scratch_*.ps1
+find_*.ps1
+check_*.ps1
+sample_*.ps1
+inspect_*.ps1
+clean_*.ps1
+run_*.ps1
+map_*.ps1
+cluster_*.ps1
+test_*.ps1
+backup_*.ps1
